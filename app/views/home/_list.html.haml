@@ -1,0 +1,6 @@
+.col-lg-6
+  .panel{ class: "panel-#{klass}" }
+    .panel-heading
+      %h4= title
+    .panel-body
+      %ol= render partial: type, collection: col

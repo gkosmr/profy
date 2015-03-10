@@ -1,0 +1,19 @@
+- if notice.present?
+  .alert.alert-success{ role: "alert"}= notice
+  
+%p
+  %b Name:
+  = @faculty.name
+%p
+  %b Short name:
+  = @faculty.short_name
+%p
+  %b University:
+  = @faculty.university
+%p
+  %b Address:
+  = @faculty.address
+
+= link_to 'Edit', edit_faculty_path(@faculty)
+\|
+= link_to 'Back', faculties_path

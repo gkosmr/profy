@@ -1,0 +1,29 @@
+= form_for @faculty, html: { class: 'form-horizontal' } do |f|
+  - if @faculty.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@faculty.errors.count, "error")} prohibited this faculty from being saved:"
+      %ul
+        - @faculty.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :name, class: 'col-sm-2 control-label'
+    .col-sm-6
+      = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :short_name, class: 'col-sm-2 control-label'
+    .col-sm-6
+      = f.text_field :short_name, class: 'form-control'
+  .form-group
+    = f.label :university, class: 'col-sm-2 control-label'
+    .col-sm-6
+      = f.text_field :university, class: 'form-control'
+  .form-group
+    = f.label :address, class: 'col-sm-2 control-label'
+    .col-sm-6
+      = f.text_field :address, class: 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-6
+      = f.submit 'Save', class: 'btn btn-primary'
+      |
+      = link_to 'Back', faculties_path

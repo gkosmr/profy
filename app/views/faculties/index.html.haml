@@ -1,0 +1,26 @@
+%h1 Listing faculties
+
+%table.table.table-striped.table-responsive
+  %thead
+    %tr
+      %th Name
+      %th Short name
+      %th University
+      %th Address
+      %th
+      
+  %tbody
+    - @faculties.each do |faculty|
+      %tr
+        %td= faculty.name
+        %td= faculty.short_name
+        %td= faculty.university
+        %td= faculty.address
+        %td
+          = link_to 'Show', faculty
+          |
+          = link_to 'Edit', edit_faculty_path(faculty)
+          |
+          = link_to 'Destroy', faculty, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+= link_to 'New Faculty', new_faculty_path, class: 'btn btn-primary'

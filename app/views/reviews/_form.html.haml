@@ -1,0 +1,22 @@
+- @review ||= Review.new
+= form_for @review, url: url, html: { class: "form-horizontal" } do |f|
+  - if @review.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@review.errors.count, "error")} prohibited this review from being saved:"
+      %ul
+        - @review.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.hidden_field :professor_id, value: @professor.id
+
+  .form-group
+    = f.label :rating, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.select :rating, options_for_select([["1 - Awful", 1], ["2 - Bad", 2], ["3 - Average", 3], ["4 - Good", 4], ["5 - Brilliant", 5]], @review.rating), {}, class: "form-control"
+  .form-group
+    = f.label :comment, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_area :comment, class: "form-control", rows: 5
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit 'Save', class: 'btn btn-primary'

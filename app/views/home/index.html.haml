@@ -1,0 +1,9 @@
+.row
+  .col-sm-12.text-center
+    %h1 Welcome to Profy
+    %h3 Rate your professors
+
+  = render 'list', title: 'Top rated professors', klass: 'success', type: 'professor', col: @professors.reverse.first(5)
+  = render 'list', title: 'Worst rated professors', klass: 'danger', type: 'professor', col: @professors.first(5)
+  = render 'list', title: 'Best faculties', klass: 'success', type: 'faculty', col: @faculties.reverse.first(5)
+  = render 'list', title: 'Worst faculties', klass: 'danger', type: 'faculty', col: @faculties.first(5)

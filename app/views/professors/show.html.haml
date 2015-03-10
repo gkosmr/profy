@@ -1,0 +1,45 @@
+- if notice.present?
+  .alert.alert-success{ role: "alert"}= notice
+
+%h1= @professor.full_name
+
+%h3
+  Average rating:
+  = @professor.average_rating
+
+%p
+  %b Position:
+  = @professor.position
+%p
+  %b Course names:
+  = @professor.course_names
+%p
+  %b Faculty:
+  = @professor.faculty.name
+
+%p
+  %b Number of reviews:
+  = @professor.reviews.count
+
+%p
+  %b Number of comments:
+  = @professor.reviews.select{ |r| !r.comment.blank? }.count
+
+= link_to 'Edit', edit_professor_path(@professor)
+\|
+= link_to 'Back', professors_path
+
+%h2 Add review
+.row
+  .col-lg-6
+    .panel.panel-default
+      .panel-body
+        = render 'reviews/form', url: professor_reviews_path(@professor)
+
+%h2 Reviews
+.row
+  - if @professor.reviews.count > 0
+    = render @professor.reviews
+  - else
+    .col-sm-12
+      No reviews yet. Be the first to review!

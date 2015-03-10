@@ -1,0 +1,34 @@
+.container
+  = form_for @professor, html: { class: "form-horizontal" } do |f|
+    - if @professor.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@professor.errors.count, "error")} prohibited this professor from being saved:"
+        %ul
+          - @professor.errors.full_messages.each do |msg|
+            %li= msg
+
+    .form-group
+      = f.label :first_name, class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.text_field :first_name, class: "form-control"
+    .form-group
+      = f.label :last_name, class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.text_field :last_name, class: "form-control"
+    .form-group
+      = f.label :position, class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.text_field :position, class: "form-control"
+    .form-group
+      = f.label :course_names, class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.text_field :course_names, class: "form-control"
+    .form-group
+      = f.label :faculty, class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.select :faculty_id, options_from_collection_for_select(Faculty.all, :id, :name, @professor.faculty_id), {}, class: "form-control"
+    .form-group
+      .col-sm-offset-2.col-sm-4
+        = f.submit 'Save', class: 'btn btn-primary'
+        |
+        = link_to 'Back', professors_path

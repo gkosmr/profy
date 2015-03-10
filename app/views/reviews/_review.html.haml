@@ -1,0 +1,13 @@
+- if review.comment.present?
+  .col-lg-6
+    .panel{ class: class_for(review.rating) }
+      .panel-heading
+        %span.pull-right= review.created_at.in_time_zone('CET').strftime('%H:%M, %-d.%-m.%Y')
+        Rating:
+        = review.rating
+      .panel-body
+        %div= review.comment
+        %div.pull-right
+          = link_to 'Edit', edit_professor_review_path(@professor, review)
+          |
+          = link_to 'Destroy', professor_review_path(@professor, review), :method => :delete, :data => { :confirm => 'Are you sure?' }

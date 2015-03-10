@@ -1,0 +1,28 @@
+%h1 Listing professors
+
+%table.table.table-striped.table-responsive
+  %thead
+    %tr
+      %th First name
+      %th Last name
+      %th Position
+      %th Course names
+      %th Faculty
+      %th
+      
+  %tbody
+    - @professors.each do |professor|
+      %tr
+        %td= professor.first_name
+        %td= professor.last_name
+        %td= professor.position
+        %td= professor.course_names
+        %td= professor.faculty.try(:short_name)
+        %td
+          = link_to 'Show', professor
+          | 
+          = link_to 'Edit', edit_professor_path(professor)
+          |
+          = link_to 'Destroy', professor, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+= link_to 'Add new Professor', new_professor_path, class: 'btn btn-primary'
