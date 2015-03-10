@@ -1,7 +1,8 @@
 Profy (Professor Rating App)
 ============================
 
-Rate your professor.
+##FMF workshop Exemplary RoR App##
+
 
 Models:
 -------
